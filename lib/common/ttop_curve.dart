@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pricee/common/custome_clippers.dart';
 
-
 class Ttop_curve extends StatelessWidget {
   const Ttop_curve(
       {super.key, required this.systemBrightness, required this.child});
@@ -14,8 +13,8 @@ class Ttop_curve extends StatelessWidget {
     return ClipPath(
       clipper: customcPath(),
       child: Container(
-        //height: 300,
-        color: Colors.green,
+        height: 300,
+        color: Color(0xffb043434),
         child: Stack(
           children: [
             //page

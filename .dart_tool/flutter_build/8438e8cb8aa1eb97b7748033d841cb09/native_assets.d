@@ -1,0 +1,1 @@
+ C:\\Users\\VIPIN\\Documents\\flutter\ projects\\compare\ price\ app\\pricee\\.dart_tool\\flutter_build\\8438e8cb8aa1eb97b7748033d841cb09\\native_assets.yaml: 

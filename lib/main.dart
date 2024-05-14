@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pricee/common/PGridlayout.dart';
+import 'package:pricee/common/Title%20_row.dart';
+import 'package:pricee/common/feature_card.dart';
+
 import 'package:pricee/common/style/widget/Tappbar.dart';
+import 'package:pricee/common/style/widget/navigation/main%20screen().dart';
+import 'package:pricee/common/style/widget/search_fied.dart';
+import 'package:pricee/common/style/widget/verticalProductcard.dart';
 import 'package:pricee/common/ttop_curve.dart';
 
 void main() {
@@ -14,72 +21,156 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: myhomepage(),
+      home: MainScreen(),
     );
   }
 }
 
-class myhomepage extends StatelessWidget{
-
-@override
+class myhomepage extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-     Brightness systemBrightness = MediaQuery.of(context).platformBrightness;
+    Brightness systemBrightness = MediaQuery.of(context).platformBrightness;
 
     return Scaffold(
-  
-      body: SingleChildScrollView(
-        child: Column(
-     children: [ 
-Ttop_curve(
-              systemBrightness: systemBrightness,
-              child: Column(
+        body: SingleChildScrollView(
+            child: Column(children: [
+      Ttop_curve(
+          systemBrightness: systemBrightness,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            TAppbar(
+              backgroundcolor: Color(0xffb043434),
+              title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TAppbar(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Ayushi",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.merge(const TextStyle(color: Colors.white)),
-                        ),
-                        Text("address",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.merge(const TextStyle(color: Colors.white))),
-                      ],
-                    ),
-                    actions: const [
-                      Icon(
-                        Iconsax.shopping_bag,
-                        color: Colors.white,
-                      )
+                  Row(
+                    children: [
+                      Text(
+                        "Hello",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Ayush",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.w700),
+                      ),
                     ],
-                    showbackground: false,
-                  ),],
-              )
+                  ),
+                ],
+              ),
+              actions: const [
+                Column(
+                  children: [
+                    Text(
+                      "Your Location",
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                )
+              ],
+              showbackground: false,
+            ),
+
+//search button
+
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 40,
+                    width: 300,
+                    child: Searchfield(
+                        icon: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                        text: 'Search for products'),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 17,
+                  child: Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 20,
+                  ),
+                )
+              ],
+            ),
+          ])),
+      //you might know
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "you might know ",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            Text(
+              "view all",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
 
+      // productCardVertical()
 
+      Container(
+        height: 240,
+        //color: Colors.amber,
+        child: ListView.builder(
+          itemCount: 6,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: productCardVertical(),
+            );
+          },
+        ),
+      ),
+      SizedBox(
+        height: 30,
+      ),
+//--------------------------feature store----------------------------------
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Featurs store",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            Text(
+              "view all",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+//----------------------------- feature card--------------------------------
 
-       ]
-     
-
-    )
-       )   );
-
+      PGridlayout(itemcont: 6, itembuilder: (_, index) => featureCard())
+    ])));
   }
-
-
 }
