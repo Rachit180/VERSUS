@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pricee/common/PGridlayout.dart';
 import 'package:pricee/common/Title%20_row.dart';
@@ -33,6 +34,13 @@ class MyApp extends StatelessWidget {
 }
 
 class myhomepage extends StatelessWidget {
+  List<String> productName = ["Ice-cream", "Chocolate", "Pepsi"];
+  List<String> offer = [
+    "100% off on first order",
+    "Claim Gift card",
+    "Free delivery",
+    "Exclusive offers"
+  ];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -138,12 +146,15 @@ class myhomepage extends StatelessWidget {
         height: 240,
         //color: Colors.amber,
         child: ListView.builder(
-          itemCount: 6,
+          itemCount: 3,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: productCardVertical(),
+              child: productCardVertical(
+                count: index,
+                text: productName[index],
+              ),
             );
           },
         ),
@@ -170,7 +181,15 @@ class myhomepage extends StatelessWidget {
       ),
 //----------------------------- feature card--------------------------------
 
-      PGridlayout(itemcont: 6, itembuilder: (_, index) => featureCard())
+      //featureCard(),
+      PGridlayout(
+        itemcont: 4,
+        itembuilder: (_, index) => featureCard(
+          count: index,
+          offer: offer[index],
+        ),
+        mainaxisExtent: 100,
+      )
     ])));
   }
 }

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class productCardVertical extends StatelessWidget {
+  productCardVertical({
+    required this.count,
+   this.text
+  });
+  final int count;
+  String? text;
   @override
   Widget build(BuildContext context) {
     Brightness systembrightness = MediaQuery.of(context).platformBrightness;
@@ -10,7 +16,7 @@ class productCardVertical extends StatelessWidget {
       onTap: () {},
       child: Container(
         width: 150,
-        height: 200,
+        //height: 265,
         decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -26,8 +32,11 @@ class productCardVertical extends StatelessWidget {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(2),
-                  child:
-                      Image(image: AssetImage("assets/images/Chocolates.png")),
+                  child: Container(
+                    height: 100,
+                    child: Image(
+                        image: AssetImage("assets/images/Product$count.png")),
+                  ),
                 ),
               ),
               Positioned(
@@ -52,7 +61,7 @@ class productCardVertical extends StatelessWidget {
             ]),
             //details
             Text(
-              "Green Nike sports shoe",
+            text!,
               style: Theme.of(context).textTheme.bodyMedium,
               overflow: TextOverflow.clip,
             ),
@@ -72,7 +81,7 @@ class productCardVertical extends StatelessWidget {
                 )
               ],
             ),
-
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

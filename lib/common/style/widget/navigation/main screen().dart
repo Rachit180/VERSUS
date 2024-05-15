@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pricee/common/style/widget/navigation/nav_bar.dart';
 import 'package:pricee/common/style/widget/navigation/nav_model.dart';
 import 'package:pricee/main.dart';
+import 'package:pricee/screens/userProfilePage.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -35,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
         navKey: notificationNavKey,
       ),
       NavModel(
-        page: const TabPage(tab: 4),
+        page: profilePage(),
         navKey: profileNavKey,
       ),
     ];

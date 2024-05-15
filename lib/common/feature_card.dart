@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class featureCard extends StatelessWidget {
+  featureCard({required this.count,this.offer});
+  final int count;
+  String? offer;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -22,7 +26,7 @@ class featureCard extends StatelessWidget {
           Expanded(
             child: Container(
               child: Text(
-                "100 % Free on fist order",
+                    offer!,
               ),
               height: 40,
               width: 40,
@@ -31,8 +35,7 @@ class featureCard extends StatelessWidget {
           Container(
             height: 50,
             width: 50,
-            child: Image(
-                image: AssetImage("assets/images/Blinkit-Logo-Yellow.png")),
+            child: Image(image: AssetImage("assets/images/brand$count.png")),
           )
         ],
       ),
